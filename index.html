@@ -1,0 +1,1168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STORAGE SYSTEM</title>
+    <link rel="stylesheet" href="login.css">
+    <script src="script2.js"></script>
+
+
+
+ </head>
+
+<input type="text" id="myInput"  placeholder="Search for a study" title="Type ">
+<button onclick="myFunction()">Search</button>
+
+
+
+<h3>Filter by Platform</h3>
+<select class = "filter" id="platformFilter">
+  <option value="All">All</option>
+  <option value="Human">Human</option>
+  <option value="Mouse">Mouse</option>
+</select>
+
+<h3>Filter by Tissue</h3>
+<select class = "filter" id="tissueFilter">
+  <option value="All">All</option>
+  <option value="Meningioma">Meningioma</option>
+  <option value="GBM">GBM</option>
+  <option value="MPNST">MPNST</option>
+  <option value="NF">NF</option>
+  <option value="SCH">SCH</option>
+</select>
+
+<button onclick="filterAll()">Apply Filter</button>
+<button onclick="resetFilters()">Reset Filters</button>
+
+
+
+<table border="1" class="dataframe" id="database">
+  <thead>
+    <tr class="header">
+      <th>Number</th>
+      <th>Platform</th>
+      <th>Tissue</th>
+      <th>Study</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 220126_A00827_0498_BHT25TDRXY_P210060]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241219_LH00244_0226_A22VK3LLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240913_LH00244_0159_A22NKN7LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 20250107_LH00244_0231_A22VJWMLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230425_A00827_0786_AHJ2GMDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[MVoi, 210204_NB500964_0030_AHLGLMAFX2_Zadeh]</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230228_A00827_0772_AHJCTYDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>24</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20240606_LH00244_0109_A22K3F5LT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241219_LH00244_0226_A22VK3LLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230125_A00827_0755_BHHK3KDMXY_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230519_A00827_0804_BHKJGJDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>29</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250325_LH00244_0279_B22W7N3LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>30</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>Human</td>
+      <td>PNST</td>
+      <td>[MLi, 20240918_LH00244_0164_B22NL5WLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 221025_A00827_0679_AH357TDSX5_Zadeh_Shelia_multiome]</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>44</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>45</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>46</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[Gaiti, 230228_A00827_0772_AHJCTYDMXY_Gaiti_Xuyao_multiome]</td>
+    </tr>
+    <tr>
+      <th>47</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>48</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230519_A00827_0804_BHKJGJDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>49</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>50</th>
+      <td>Human</td>
+      <td>PNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>51</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>52</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230125_A00827_0755_BHHK3KDMXY_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>53</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>54</th>
+      <td>Human</td>
+      <td>SCH</td>
+      <td>[MLi, 20240416_LH00244_0087_A22HF5GLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>55</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>56</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>57</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 220215_A00827_0509_BHVT53DSX2_P210022]</td>
+    </tr>
+    <tr>
+      <th>58</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 210913_A00827_0406_BH2NL3DMXY_P210022]</td>
+    </tr>
+    <tr>
+      <th>59</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20240606_LH00244_0109_A22K3F5LT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>60</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 20250124_LH00244_0243_B22VK2JLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>61</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>62</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241031_LH00244_0186_A22TMTYLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>63</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240918_LH00244_0164_B22NL5WLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>64</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 220921_A00827_0651_BH7HVKDMXY_Zadeh_Shelia_multiome]</td>
+    </tr>
+    <tr>
+      <th>65</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 20250124_LH00244_0243_B22VK2JLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>66</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>67</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>69</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>70</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>71</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>72</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20241219_LH00244_0226_A22VK3LLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>73</th>
+      <td>Human</td>
+      <td>SCH</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>75</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>76</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>77</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240606_LH00244_0109_A22K3F5LT3_Ketela_Harsh_Jo_multiome]</td>
+    </tr>
+    <tr>
+      <th>79</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240918_LH00244_0164_B22NL5WLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>80</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 211220_A00827_0483_AHVVW5DSX2_P210022]</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>Human</td>
+      <td>SCH</td>
+      <td>[MLi, 20240918_LH00244_0164_B22NL5WLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250325_LH00244_0279_B22W7N3LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>86</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 210625_A00827_0344_AH2GG3DMXY_Nick_P210022]</td>
+    </tr>
+    <tr>
+      <th>87</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>88</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 220921_A00827_0651_BH7HVKDMXY_Zadeh_Shelia_multiome]</td>
+    </tr>
+    <tr>
+      <th>89</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>90</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>91</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241213_LH00244_0222_A22VJWHLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>92</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230519_A00827_0804_BHKJGJDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>93</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 220126_A00827_0498_BHT25TDRXY_P210060]</td>
+    </tr>
+    <tr>
+      <th>94</th>
+      <td>Human</td>
+      <td>PNST</td>
+      <td>[MLi, 20240918_LH00244_0164_B22NL5WLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>95</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>96</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>97</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230228_A00827_0772_AHJCTYDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>98</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 211209_A00827_0474_BHTGTMDRXY_P210022]</td>
+    </tr>
+    <tr>
+      <th>99</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>100</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240416_LH00244_0087_A22HF5GLT3_Ketela_Harsh_Jo_multiome]</td>
+    </tr>
+    <tr>
+      <th>101</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 221121_A00469_0385_BHHHTHDMXY_multiome_Zadeh_Shelia]</td>
+    </tr>
+    <tr>
+      <th>102</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>103</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>104</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>105</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240606_LH00244_0109_A22K3F5LT3_Ketela_Harsh_Jo_multiome]</td>
+    </tr>
+    <tr>
+      <th>106</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 210804_A00827_0374_BHGMGNDRXY_P210022_Nick]</td>
+    </tr>
+    <tr>
+      <th>107</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>108</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>109</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250325_LH00244_0279_B22W7N3LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>110</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 220126_A00827_0498_BHT25TDRXY_P210060]</td>
+    </tr>
+    <tr>
+      <th>111</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 210913_A00827_0406_BH2NL3DMXY_P210022]</td>
+    </tr>
+    <tr>
+      <th>112</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>113</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20241015_LH00244_0174_A22NL7FLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>114</th>
+      <td>Human</td>
+      <td>PNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>115</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240918_LH00244_0164_B22NL5WLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>116</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 220921_A00827_0651_BH7HVKDMXY_Zadeh_Shelia_multiome]</td>
+    </tr>
+    <tr>
+      <th>117</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240416_LH00244_0087_A22HF5GLT3_Ketela_Harsh_Jo_multiome]</td>
+    </tr>
+    <tr>
+      <th>118</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241023_LH00244_0183_B22TMVWLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>119</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>120</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>121</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 210804_A00827_0373_AHGMCTDRXY_P210022_Nick]</td>
+    </tr>
+    <tr>
+      <th>122</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>123</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250325_LH00244_0279_B22W7N3LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>124</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 210625_A00827_0344_AH2GG3DMXY_Nick_P210022]</td>
+    </tr>
+    <tr>
+      <th>125</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241213_LH00244_0222_A22VJWHLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>126</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>127</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230310_A00827_0773_BHV32WDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>128</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>129</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 211220_A00827_0483_AHVVW5DSX2_P210060]</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>131</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>132</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 20250124_LH00244_0243_B22VK2JLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>133</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[MVoi, 210204_NB500964_0030_AHLGLMAFX2_Zadeh]</td>
+    </tr>
+    <tr>
+      <th>134</th>
+      <td>Human</td>
+      <td>SCH</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>135</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>136</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230203_A00827_0763_BHKMFYDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>137</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240416_LH00244_0087_A22HF5GLT3_Ketela_Harsh_Jo_multiome]</td>
+    </tr>
+    <tr>
+      <th>138</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230809_A00827_0849_BHFJ2WDSX7_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>139</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>140</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>141</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241213_LH00244_0222_A22VJWHLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>142</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>143</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 211209_A00827_0474_BHTGTMDRXY_P210022]</td>
+    </tr>
+    <tr>
+      <th>144</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>145</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 220921_A00827_0651_BH7HVKDMXY_Zadeh_Shelia_multiome]</td>
+    </tr>
+    <tr>
+      <th>146</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230310_A00827_0773_BHV32WDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>147</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>148</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>149</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>150</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240903_LH00244_0153_A22NKV3LT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>151</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241031_LH00244_0186_A22TMTYLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>152</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>153</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240801_LH00244_0132_B22MJFTLT3_Zadeh_Yosef_multiome]</td>
+    </tr>
+    <tr>
+      <th>154</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>155</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>156</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230519_A00827_0804_BHKJGJDMXY_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>157</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>158</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>159</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>160</th>
+      <td>Human</td>
+      <td>Glioma</td>
+      <td>[MVoi, 220215_A00827_0509_BHVT53DSX2_P210022]</td>
+    </tr>
+    <tr>
+      <th>161</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>162</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>163</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>164</th>
+      <td>Human</td>
+      <td>MPNST</td>
+      <td>[MLi, 20241015_LH00244_0174_A22NL7FLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>165</th>
+      <td>Human</td>
+      <td>SCH</td>
+      <td>[MLi, 20250227_LH00244_0260_A22VK75LT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>166</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230310_A00827_0773_BHV32WDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>167</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[JWang, 230119_A00827_0752_BHKLKTDSX5_Zadeh_Justin_multiome]</td>
+    </tr>
+    <tr>
+      <th>168</th>
+      <td>Human</td>
+      <td>PNST</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>169</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 221121_A00469_0385_BHHHTHDMXY_multiome_Zadeh_Shelia]</td>
+    </tr>
+    <tr>
+      <th>170</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241211_LH00244_0218_A22VK25LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>171</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+    <tr>
+      <th>172</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>173</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 220921_A00827_0651_BH7HVKDMXY_Zadeh_Shelia_multiome]</td>
+    </tr>
+    <tr>
+      <th>174</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>175</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>176</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 230111_A00827_0745_BHKMLCDSX5_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>177</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 20250124_LH00244_0243_B22VK2JLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>178</th>
+      <td>Human</td>
+      <td>NF</td>
+      <td>[MLi, 20250321_LH00244_0276_A22W7NCLT3_Zadeh_Mira_multiome]</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20250107_LH00244_0231_A22VJWMLT3_Zadeh_Sheila__6674-facial_multiome]</td>
+    </tr>
+    <tr>
+      <th>180</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[YEll, 20240829_LH00244_0150_B22NYK3LT3_Zadeh_Yousef]</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>Mouse</td>
+      <td>GBM</td>
+      <td>[SMan, 20250107_LH00244_0231_A22VJWMLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241101_LH00244_0188_A22TKG2LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241219_LH00244_0226_A22VK3LLT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>Human</td>
+      <td>GBM</td>
+      <td>[SMan, 20241106_LH00244_0190_A22TMT7LT3_Zadeh_Sheila_multiome]</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>Human</td>
+      <td>Meningioma</td>
+      <td>[ALan, 20250415_LH00244_0288_A22YJWHLT3_Zadeh_Alex_multiome]</td>
+    </tr>
+  </tbody>
+</table>
